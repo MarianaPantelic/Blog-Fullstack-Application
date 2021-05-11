@@ -1,7 +1,12 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import About from "./pages/about";
+import Blog from "./pages/blog";
+import Home from "./pages/home";
+import "./main.css";
 
 const App = () => {
   return (
@@ -19,7 +24,7 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
-      <Nav className="justify-content-center" activeKey="/home">
+      <Nav className="justify-content-center" activeKey="/home" variant="fixed">
         <Nav.Item>
           <Nav.Link href="/">Home</Nav.Link>
         </Nav.Item>
