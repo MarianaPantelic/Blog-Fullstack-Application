@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-
+body {
+  background: #df7d58;
+}
 img {
   height: 100vh;
 }
@@ -15,11 +17,23 @@ img {
 .nav a:visited {
   color: white;
 }
+h2 {
+  font-size: 5rem;
+}
 .happy-title {
   position: absolute;
   bottom: 26rem;
-  right: -2rem;
+  right: -4rem;
   color: black;
   font-family: "Pacifico", cursive;
-  font-size: 5rem;
+  text-shadow: 2px 2px #df7d58;
+}
+.blog-title {
+  position: absolute;
+  bottom: 18rem;
+  text-align: center;
+  color: black;
+  font-family: "Pacifico", cursive;
+  line-height: 2.5;
+  text-shadow: 2px 2px #df7d58;
 }
