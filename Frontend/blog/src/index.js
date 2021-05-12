@@ -24,7 +24,7 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
-      <Nav className="justify-content-center" activeKey="/home" variant="fixed">
+      <Nav className="justify-content-center" activeKey="/home">
         <Nav.Item>
           <Nav.Link href="/">Home</Nav.Link>
         </Nav.Item>

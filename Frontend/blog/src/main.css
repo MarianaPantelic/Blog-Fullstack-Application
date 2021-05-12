@@ -1,0 +1,15 @@
+img {
+  height: 100vh;
+}
+.nav {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-color: black;
+  width: 100%;
+  font-size: 2rem;
+}
+.nav a,
+.nav a:visited {
+  color: white;
+}
