@@ -6,13 +6,13 @@ const Home = () => {
   return (
     <>
       <Carousel>
-        <Carousel.Item interval={2000}>
+        <Carousel.Item interval={5000}>
           <img className="d-block w-100" src={img1} alt="First slide" />
           <Carousel.Caption>
-            <h2>What makes you happy?</h2>
+            <h2 className="happy-title">What makes you happy?</h2>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item interval={2000}>
+        <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
             src="holder.js/800x400?text=Second slide&bg=282c34"
@@ -24,7 +24,7 @@ const Home = () => {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item interval={2000}>
+        <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
             src="holder.js/800x400?text=Third slide&bg=20232a"
