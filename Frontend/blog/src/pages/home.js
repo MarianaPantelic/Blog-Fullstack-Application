@@ -2,40 +2,35 @@ import React from "react";
 import { Button, Carousel } from "react-bootstrap";
 import img1 from "../img/woman-570883_1920.jpg";
 import img2 from "../img/ocean-1867285_1920.jpg";
-import img3 from "../img/ball-1845545_1920.jpg";
+import img3 from "../img/heart-692312_1920.jpg";
 import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <>
       <Carousel>
-        <Carousel.Item interval={2000}>
+        <Carousel.Item interval={3000}>
           <img className="d-block w-100" src={img1} alt="First slide" />
           <Carousel.Caption>
             <h2 className="happy-title">What makes you happy?</h2>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item interval={2000}>
+        <Carousel.Item interval={3000}>
           <img className="d-block w-100" src={img2} alt="Second slide" />
-
           <Carousel.Caption className="blog-title">
             <h2>This is a blog</h2>
             <h2>about the little things</h2>
             <h2>that make us happy!</h2>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item interval={2000}>
+        <Carousel.Item interval={3000}>
           <img className="d-block w-100" src={img3} alt="Third slide" />
-
           <Carousel.Caption>
-            <div className="smiley-title">
-              <h2>Tell me</h2>
-              <h2>
-                what made you <span className="today">today!</span>
-              </h2>
-            </div>
+            <h2 className="smiley-title">
+              What made you <i class="fas fa-smile-wink"></i> today?
+            </h2>
             <Link to={"/post"}>
-              <Button>Post</Button>
+              <div className="home-btn">Post</div>
             </Link>
           </Carousel.Caption>
         </Carousel.Item>

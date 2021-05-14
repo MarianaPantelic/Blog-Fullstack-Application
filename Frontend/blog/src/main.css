@@ -38,17 +38,25 @@ h2 {
   text-shadow: 2px 2px #df7d58;
 }
 i {
-  color: yellow;
+  color: #f4b343;
 }
 .smiley-title {
-  position: absolute;
-  bottom: 20rem;
-  left: 8rem;
   color: black;
   font-family: "Pacifico", cursive;
   line-height: 2.5;
   text-shadow: 2px 2px #df7d58;
+  margin-top: 20rem;
 }
-.today {
-  margin-left: 14rem;
+.home-btn {
+  width: 10rem;
+  font-size: 2rem;
+  background-color: #f4b343;
+  color: black;
+  border-radius: 10px 10px;
+  margin: 0 auto;
+}
+a,
+a:hover {
+  color: black;
+  text-decoration: none;
 }
