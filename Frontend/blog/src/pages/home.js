@@ -1,7 +1,8 @@
 import React from "react";
-import { Carousel } from "react-bootstrap";
+import { Button, Carousel } from "react-bootstrap";
 import img1 from "../img/woman-570883_1920.jpg";
 import img2 from "../img/ocean-1867285_1920.jpg";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -19,7 +20,7 @@ const Home = () => {
           <Carousel.Caption className="blog-title">
             <h2>This is a blog</h2>
             <h2>about the little things</h2>
-            <h2>that make me happy!</h2>
+            <h2>that make us happy!</h2>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={2000}>
@@ -30,10 +31,15 @@ const Home = () => {
           />
 
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <div className="smiley-title">
+              <h2>Tell me</h2>
+              <h2>
+                what made you <i class="fas fa-smile-wink"></i> today
+              </h2>
+            </div>
+            <Link to={"/post"}>
+              <Button>Post</Button>
+            </Link>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

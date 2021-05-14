@@ -37,3 +37,15 @@ h2 {
   line-height: 2.5;
   text-shadow: 2px 2px #df7d58;
 }
+i {
+  color: yellow;
+}
+.smiley-title {
+  position: absolute;
+  bottom: 18rem;
+  text-align: center;
+  color: black;
+  font-family: "Pacifico", cursive;
+  line-height: 2.5;
+  text-shadow: 2px 2px #df7d58;
+}
