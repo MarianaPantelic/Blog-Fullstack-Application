@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Carousel } from "react-bootstrap";
 import img1 from "../img/woman-570883_1920.jpg";
 import img2 from "../img/ocean-1867285_1920.jpg";
+import img3 from "../img/ball-1845545_1920.jpg";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -24,17 +25,13 @@ const Home = () => {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={2000}>
-          <img
-            className="d-block w-100"
-            src={"holder.js/800x400?text=Third slide&bg=20232a"}
-            alt="Third slide"
-          />
+          <img className="d-block w-100" src={img3} alt="Third slide" />
 
           <Carousel.Caption>
             <div className="smiley-title">
               <h2>Tell me</h2>
               <h2>
-                what made you <i class="fas fa-smile-wink"></i> today
+                what made you <span className="today">today!</span>
               </h2>
             </div>
             <Link to={"/post"}>
