@@ -42,10 +42,13 @@ i {
 }
 .smiley-title {
   position: absolute;
-  bottom: 18rem;
-  text-align: center;
+  bottom: 20rem;
+  left: 8rem;
   color: black;
   font-family: "Pacifico", cursive;
   line-height: 2.5;
   text-shadow: 2px 2px #df7d58;
+}
+.today {
+  margin-left: 14rem;
 }
