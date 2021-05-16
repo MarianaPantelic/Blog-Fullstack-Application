@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Carousel } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import img1 from "../img/woman-570883_1920.jpg";
 import img2 from "../img/ocean-1867285_1920.jpg";
 import img3 from "../img/heart-692312_1920.jpg";
