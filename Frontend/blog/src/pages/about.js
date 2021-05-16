@@ -5,23 +5,23 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <Container>
-      <div>
+      <div className="about">
         <h2>About</h2>
         <q>Happiness is a beautiful smile!</q>
-        <p>Debasish Mridha</p>
-        <p>
+        <p className="author">Debasish Mridha</p>
+        <p className="mt-5">
           This is a blog about the little things that make you happy every day:
           family, friends, love, a good food, a nice place. It's about you!
         </p>
-        <p>
+        <p className="mt-5">
           This is your chance to share with the world what made you happy today!
           Or just read about the things that made others happy!
         </p>
         <Link to={"/blog"}>
-          <button>Read</button>
+          <button className="m-5">Read</button>
         </Link>
         <Link to={"/post"}>
-          <button>Post</button>
+          <button className="m-5">Post</button>
         </Link>
 
         <p></p>
