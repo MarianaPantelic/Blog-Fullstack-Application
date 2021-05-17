@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 body {
-  background: #df7d58;
+  background: url(./img/beach-6100209_1920.jpg);
 }
 img {
   height: 100vh;
@@ -20,6 +20,9 @@ img {
 h2 {
   font-size: 5rem;
 }
+
+/*home page*/
+
 .happy-title {
   position: absolute;
   bottom: 26rem;
