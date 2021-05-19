@@ -57,6 +57,7 @@ i {
   color: black;
   border-radius: 10px 10px;
   margin: 0 auto;
+  font-family: "Pacifico", cursive;
 }
 a,
 a:hover {
@@ -68,7 +69,7 @@ a:hover {
 .about {
   font-family: "Pacifico", cursive;
   font-size: 2.5rem;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.445);
   color: white;
   border-radius: 10px 10px;
   text-align: center;
@@ -78,4 +79,8 @@ a:hover {
 .author {
   font-size: 1.5rem;
   margin-left: 20rem;
+}
+.about button {
+  width: 10rem;
+  border-radius: 10px 10px;
 }
