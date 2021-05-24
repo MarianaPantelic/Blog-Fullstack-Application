@@ -3,9 +3,9 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var indexRouter = require("./routes/index.js");
+var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var blogRouter = require("./routes/blog");
+const blogRouter = require("./routes/blog");
 
 const { setCors } = require("./middleware/security");
 
@@ -27,9 +27,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(setCors);
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-//app.use("/blog", blogRouter);
+app.use("/blog", blogRouter);
 
 app.use((err, req, res, next) => {
   //respond to the requestor with the error messages

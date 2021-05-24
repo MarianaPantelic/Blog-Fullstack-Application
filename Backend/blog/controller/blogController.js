@@ -17,7 +17,6 @@ exports.getPosts = (req, res) => {
 exports.addPost = (req, res, next) => {
   try {
     if (isEmpty(req.body.name)) {
-      alert("Pease enter a name!");
       //respond with an error
       const error = new Error("Request body is empty");
       //bad request
