@@ -81,14 +81,16 @@ a:hover {
   font-size: 1.5rem;
   margin-left: 20rem;
 }
-.about button {
+.about button,
+.post-container button {
   width: 10rem;
   border-radius: 10px 10px;
 }
 
 /*post page*/
 .post-container {
-  height: 40rem;
+  height: 52rem;
+  margin-top: 5rem;
 }
 .title-input {
   width: 70%;
@@ -98,7 +100,7 @@ a:hover {
   height: 20rem;
   background-color: white;
   color: black;
-  margin-top: 5rem;
+  margin-top: 2rem;
   border-radius: 10px 10px;
   border-style: none;
 }
