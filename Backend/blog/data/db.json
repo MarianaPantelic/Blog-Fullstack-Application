@@ -1,3 +1,65 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "user": "mariana",
+      "title": "Happy day",
+      "id": "1622027808405"
+    },
+    {
+      "user": "mari",
+      "title": "hello",
+      "content": "happy day\n",
+      "id": "1622028424113"
+    },
+    {
+      "user": "mari",
+      "title": "hello",
+      "content": "happy day\n",
+      "id": "1622028454133"
+    },
+    {
+      "user": "mari",
+      "title": "hello",
+      "content": {
+        "index": 9,
+        "length": 0
+      },
+      "id": "1622028672829"
+    },
+    {
+      "user": "mari",
+      "title": "hello",
+      "content": "happy day\n",
+      "id": "1622028912638"
+    },
+    {
+      "user": "mari",
+      "title": "hello",
+      "content": "happy day\n",
+      "id": "1622029224797"
+    },
+    {
+      "user": "mari",
+      "title": "hello",
+      "id": "1622029558922"
+    },
+    {
+      "user": "mari",
+      "title": "hello",
+      "content": {
+        "ops": [
+          {
+            "insert": "happy day"
+          },
+          {
+            "attributes": {
+              "header": 1
+            },
+            "insert": "\n"
+          }
+        ]
+      },
+      "id": "1622029674065"
+    }
+  ]
 }
