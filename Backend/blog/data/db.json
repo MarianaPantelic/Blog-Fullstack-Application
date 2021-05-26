@@ -1,115 +1,6 @@
 {
   "posts": [
     {
-      "user": "mariana",
-      "title": "Happy day",
-      "id": "1622027808405"
-    },
-    {
-      "user": "mari",
-      "title": "hello",
-      "content": "happy day\n",
-      "id": "1622028424113"
-    },
-    {
-      "user": "mari",
-      "title": "hello",
-      "content": "happy day\n",
-      "id": "1622028454133"
-    },
-    {
-      "user": "mari",
-      "title": "hello",
-      "content": {
-        "index": 9,
-        "length": 0
-      },
-      "id": "1622028672829"
-    },
-    {
-      "user": "mari",
-      "title": "hello",
-      "content": "happy day\n",
-      "id": "1622028912638"
-    },
-    {
-      "user": "mari",
-      "title": "hello",
-      "content": "happy day\n",
-      "id": "1622029224797"
-    },
-    {
-      "user": "mari",
-      "title": "hello",
-      "id": "1622029558922"
-    },
-    {
-      "user": "mari",
-      "title": "hello",
-      "content": {
-        "ops": [
-          {
-            "insert": "happy day"
-          },
-          {
-            "attributes": {
-              "header": 1
-            },
-            "insert": "\n"
-          }
-        ]
-      },
-      "id": "1622029674065"
-    },
-    {
-      "user": "mari",
-      "title": "hello",
-      "content": {
-        "ops": [
-          {
-            "insert": "happy day\n"
-          }
-        ]
-      },
-      "id": "1622030623622"
-    },
-    {
-      "user": "mari",
-      "title": "hello",
-      "content": {
-        "ops": [
-          {
-            "insert": "happy day"
-          },
-          {
-            "attributes": {
-              "header": 1
-            },
-            "insert": "\n"
-          }
-        ]
-      },
-      "id": "1622030715121"
-    },
-    {
-      "user": "ion",
-      "title": "hi",
-      "content": {
-        "ops": [
-          {
-            "attributes": {
-              "color": "#e60000"
-            },
-            "insert": "today is sunny"
-          },
-          {
-            "insert": "\n"
-          }
-        ]
-      },
-      "id": "1622031368826"
-    },
-    {
       "user": "ion",
       "title": "hi",
       "content": {
@@ -128,12 +19,29 @@
           }
         ]
       },
-      "id": "1622031583781"
+      "id": "1622036366366"
     },
     {
-      "user": "ion",
+      "user": "jan",
       "title": "hi",
-      "id": "1622033302114"
+      "content": {
+        "ops": [
+          {
+            "attributes": {
+              "color": "#0066cc",
+              "bold": true
+            },
+            "insert": "good job"
+          },
+          {
+            "attributes": {
+              "header": 1
+            },
+            "insert": "\n"
+          }
+        ]
+      },
+      "id": "1622037517453"
     }
   ]
 }

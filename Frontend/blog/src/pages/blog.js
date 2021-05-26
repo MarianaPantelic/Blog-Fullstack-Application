@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
 const axios = require("axios").default;
 
 const Blog = () => {
@@ -21,29 +22,38 @@ const Blog = () => {
     }
   };
   console.log(posts);
+  let contentHTML = null;
+
   return (
     <Container>
       {posts
-        ? posts.map((element) => (
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                  <div class="features-icons-icon d-flex">
-                    <i class="icon-screen-desktop m-auto text-danger"></i>
+        ? posts.map((element) => {
+            const converter = new QuillDeltaToHtmlConverter(
+              element.content.ops,
+              {}
+            );
+            contentHTML = converter.convert();
+            return (
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex">
+                      <i class="icon-screen-desktop m-auto text-danger"></i>
+                    </div>
+                    <h3>{element.title}</h3>
+                    <p class="lead mb-0">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: contentHTML,
+                        }}
+                      ></div>
+                    </p>
+                    <p>posted by: {element.user}</p>
                   </div>
-                  <h3>{element.title}</h3>
-                  <p class="lead mb-0">
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: `${element.content}`,
-                      }}
-                    ></div>
-                  </p>
-                  <p>posted by: {element.user}</p>
                 </div>
               </div>
-            </div>
-          ))
+            );
+          })
         : null}
     </Container>
   );
