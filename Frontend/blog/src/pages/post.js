@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 
-import { useForm } from "react-hook-form";
-
 const Post = () => {
   const { quill, quillRef } = useQuill();
   const [state, setState] = useState({ user: "", title: "", content: "" });
@@ -31,10 +29,12 @@ const Post = () => {
           <div className="quill mx-auto">
             <div ref={quillRef} />
           </div>
-          <Link to={"/"}>
-            <button>Back to home</button>
-          </Link>
-          <button>Post</button>
+          <div className="btn-container">
+            <Link to={"/"}>
+              <button>Home</button>
+            </Link>
+            <button className="post-btn">Post</button>
+          </div>
         </div>
       </Container>
     </>

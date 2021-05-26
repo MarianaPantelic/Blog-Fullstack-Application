@@ -81,10 +81,13 @@ a:hover {
   font-size: 1.5rem;
   margin-left: 20rem;
 }
-.about button,
+.about-container button,
 .post-container button {
   width: 10rem;
   border-radius: 10px 10px;
+}
+.btn-container {
+  margin-top: 6rem;
 }
 
 /*post page*/
@@ -107,4 +110,7 @@ a:hover {
 .ql-editor {
   background-color: white;
   font-size: 1.5rem;
+}
+.post-btn {
+  margin-left: 15rem;
 }
