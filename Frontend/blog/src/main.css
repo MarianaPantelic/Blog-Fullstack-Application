@@ -114,3 +114,10 @@ a:hover {
 .post-btn {
   margin-left: 15rem;
 }
+
+/*blog page*/
+
+.ql-image {
+  width: 10rem;
+  height: auto;
+}
