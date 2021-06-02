@@ -1,4 +1,5 @@
 var express = require("express");
+const mongoose = require("mongoose");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
@@ -7,19 +8,37 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const blogRouter = require("./routes/blog");
 
-const { setCors } = require("./middleware/security");
+const dotenv = require("dotenv");
+dotenv.config();
 
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
+const { setCors } = require("./middleware/security");
 
 var app = express();
 
+//USING LOWDB
+/* const low = require("lowdb");
+const FileSync = require("lowdb/adapters/FileSync");
 const adapter = new FileSync("data/db.json");
 const db = low(adapter);
 //add default entries to the DATABASE
 db.defaults({
   posts: [],
-}).write();
+}).write(); */
+
+//USING MONGODB
+mongoose.connect(
+  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.u2n6q.mongodb.net/toDoListDatabase?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  }
+);
+
+mongoose.connection.on("error", console.error);
+mongoose.connection.on("open", () =>
+  console.log("Database connection established")
+);
 
 app.use(logger("dev"));
 app.use(express.json());
