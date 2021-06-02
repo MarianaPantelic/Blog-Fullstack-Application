@@ -25,7 +25,7 @@ const Blog = () => {
   let contentHTML = null;
 
   return (
-    <Container>
+    <Container className="mt-5">
       {posts
         ? posts.map((element) => {
             const converter = new QuillDeltaToHtmlConverter(

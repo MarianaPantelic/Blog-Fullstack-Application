@@ -3,21 +3,31 @@ const { Schema } = mongoose;
 
 const PostSchema = new Schema(
   {
+    user: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
     },
     content: {
-      type: String,
+      type: Object,
       required: true,
-    },
-    image: {
-      type: String,
-      required: false,
-    },
-    video: {
-      type: String,
-      required: false,
+      ops: {
+        type: Array,
+        insert: {
+          type: String,
+          required: true,
+        },
+        insert: {
+          type: Object,
+          image: {
+            data: Buffer,
+            contentType: String,
+          },
+        },
+      },
     },
   },
   {
