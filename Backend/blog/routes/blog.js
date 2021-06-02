@@ -8,8 +8,12 @@ const {
   getPosts,
   addPost,
   deletePost,
+  updatePost,
+  getPost,
 } = require("../controller/blogController");
 
-router.route("/").get(getPosts).post(addPost).delete(deletePost);
+router.route("/").get(getPosts).post(addPost);
+
+router.route("/:id").get(getPost).delete(deletePost).put(updatePost);
 
 module.exports = router;

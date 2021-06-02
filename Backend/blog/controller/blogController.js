@@ -2,9 +2,12 @@ const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
 const adapter = new FileSync("data/db.json");
 const db = low(adapter);
-const isEmpty = require("lodash.isempty");
+//const isEmpty = require("lodash.isempty");
 
-exports.getPosts = (req, res) => {
+const Post = require("../models/Post");
+
+//USING LOWDB
+/* exports.getPosts = (req, res) => {
   try {
     const posts = db.get("posts").value();
     console.log(posts);
@@ -12,9 +15,21 @@ exports.getPosts = (req, res) => {
   } catch (error) {
     console.log(error);
   }
+}; */
+
+//USING MONGODB
+exports.getPosts = async (req, res, next) => {
+  try {
+    const posts = await Post.find();
+    console.log(posts);
+    res.status(200).send(posts);
+  } catch (error) {
+    next(error);
+  }
 };
 
-exports.addPost = (req, res, next) => {
+//USING LOWDB
+/* exports.addPost = (req, res, next) => {
   try {
     if (isEmpty(req.body.title)) {
       //respond with an error
@@ -41,9 +56,32 @@ exports.addPost = (req, res, next) => {
     //forward the error to the error handler
     next(error);
   }
+}; */
+
+//USING MONGODB
+exports.addPost = async (req, res, next) => {
+  try {
+    const post = new Post(req.body);
+    await post.save();
+    res.status(201).send(post);
+  } catch (error) {
+    next(error);
+  }
 };
 
-exports.deletePost = (req, res, next) => {
+//USING MONGODB
+exports.getPost = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const post = await Post.findById(id);
+    res.status(200).send(post);
+  } catch (error) {
+    next(error);
+  }
+};
+
+//USING LOWDB
+/* exports.deletePost = (req, res, next) => {
   try {
     if (isEmpty(req.body)) {
       //respond with an error
@@ -60,5 +98,28 @@ exports.deletePost = (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
+  }
+}; */
+
+//USING MONGODB
+exports.deletePost = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const post = await Post.findByIdAndDelete(id);
+    res.status(200).send(post);
+  } catch (error) {
+    next(error);
+  }
+};
+
+//USING MONGODB
+exports.updatePost = async (req, res, next) => {
+  const { id } = req.params;
+  const dt = req.body;
+  try {
+    const post = await Post.findByIdAndUpdate(id, dt, { new: true });
+    res.status(200).send(post);
+  } catch (error) {
+    next(error);
   }
 };

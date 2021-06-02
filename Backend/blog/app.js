@@ -27,7 +27,7 @@ db.defaults({
 
 //USING MONGODB
 mongoose.connect(
-  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.u2n6q.mongodb.net/toDoListDatabase?retryWrites=true&w=majority`,
+  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.u2n6q.mongodb.net/blogDatabase?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
