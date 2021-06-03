@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
+import { Link } from "react-router-dom";
 const axios = require("axios").default;
 
 const Blog = () => {
@@ -26,22 +27,19 @@ const Blog = () => {
 
   return (
     <Container className="mt-5">
-      {posts
-        ? posts.map((element) => {
-            const converter = new QuillDeltaToHtmlConverter(
-              element.content.ops,
-              {}
-            );
-            contentHTML = converter.convert();
-            return (
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                    <div class="features-icons-icon d-flex">
-                      <i class="icon-screen-desktop m-auto text-danger"></i>
-                    </div>
-                    <h3>{element.title}</h3>
-                    <p class="lead mb-0">
+      <div className="blog-container d-flex flex-wrap justify-content-center">
+        {posts
+          ? posts.map((element) => {
+              const converter = new QuillDeltaToHtmlConverter(
+                element.content.ops,
+                {}
+              );
+              contentHTML = converter.convert();
+              return (
+                <div className="post-box mt-5 col-lg-5 card">
+                  <h3 class="card-header">{element.title}</h3>
+                  <div class="card-body">
+                    <p class="card-text">
                       <div
                         dangerouslySetInnerHTML={{
                           __html: contentHTML,
@@ -50,11 +48,15 @@ const Blog = () => {
                     </p>
                     <p>posted by: {element.user}</p>
                   </div>
+                  <button className="m-3">Delete Post</button>
+                  <Link to={"/post"}>
+                    <button className="m-3"> Update Post</button>
+                  </Link>
                 </div>
-              </div>
-            );
-          })
-        : null}
+              );
+            })
+          : null}
+      </div>
     </Container>
   );
 };

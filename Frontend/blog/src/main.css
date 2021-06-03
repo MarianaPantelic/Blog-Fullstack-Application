@@ -120,4 +120,24 @@ a:hover {
 .ql-image {
   width: 10rem;
   height: auto;
+  float: right;
+}
+.blog-container {
+  background-color: rgba(0, 0, 0, 0.445);
+  color: white;
+  border-radius: 10px 10px;
+  text-align: center;
+  margin-top: 10rem;
+  padding: 2rem 5rem;
+}
+.post-box {
+  color: black;
+  margin: 2rem;
+  display: block;
+}
+.post-box button {
+  width: 10rem;
+  border-radius: 10px 10px;
+  font-family: "Pacifico", cursive;
+  display: inline-block;
 }
