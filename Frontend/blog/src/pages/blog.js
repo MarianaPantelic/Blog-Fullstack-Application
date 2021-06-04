@@ -28,7 +28,7 @@ const Blog = () => {
   const deletePost = async (id) => {
     try {
       axios
-        .delete("http://localhost:3001/blog", {
+        .delete("http://localhost:3001/blog/:id", {
           data: { id: posts[id].id },
         })
         .then((resp) => {
