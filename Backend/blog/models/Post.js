@@ -20,16 +20,16 @@ const PostSchema = new Schema(
           type: String,
           required: true,
         },
-        insert: {
+        /* insert: {
           type: Object,
           image: {
             data: Buffer,
             contentType: String,
-          },
-        },
+          }, */
       },
     },
   },
+  //},
   {
     toObject: {
       virtuals: true,

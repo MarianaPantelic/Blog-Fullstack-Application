@@ -25,6 +25,19 @@ const Blog = () => {
   console.log(posts);
   let contentHTML = null;
 
+  const deletePost = async (id) => {
+    try {
+      axios
+        .delete("http://localhost:3001/blog", {
+          data: { id: posts[id].id },
+        })
+        .then((resp) => {
+          sendGetRequest();
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Container className="mt-5">
       <div className="blog-container d-flex flex-wrap justify-content-center">
@@ -48,7 +61,12 @@ const Blog = () => {
                     </p>
                     <p>posted by: {element.user}</p>
                   </div>
-                  <button className="m-3">Delete Post</button>
+                  <button
+                    className="m-3"
+                    onClick={() => deletePost(element._id)}
+                  >
+                    Delete Post
+                  </button>
                   <Link to={"/post"}>
                     <button className="m-3"> Update Post</button>
                   </Link>
