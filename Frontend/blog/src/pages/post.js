@@ -50,7 +50,7 @@ const Post = () => {
         .then((resp) => sendGetRequest());
       userRef.current.value = "";
       titleRef.current.value = "";
-      quill.clipboard.dangerouslyPasteHTML("<h1>React Hook for Quill!</h1>");
+      quill.clipboard.dangerouslyPasteHTML("");
     } catch (error) {
       console.log(error);
     }

@@ -28,8 +28,8 @@ const Blog = () => {
   const deletePost = async (id) => {
     try {
       axios
-        .delete("http://localhost:3001/blog/:id", {
-          data: { id: posts[id].id },
+        .delete(`http://localhost:3001/blog/${id}`, {
+          data: { id: id },
         })
         .then((resp) => {
           sendGetRequest();
@@ -63,7 +63,7 @@ const Blog = () => {
                   </div>
                   <button
                     className="m-3"
-                    onClick={() => deletePost(element._id)}
+                    onClick={() => deletePost(element.id)}
                   >
                     Delete Post
                   </button>
