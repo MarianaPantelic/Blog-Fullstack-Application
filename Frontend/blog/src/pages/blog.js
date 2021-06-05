@@ -38,6 +38,21 @@ const Blog = () => {
       console.log(error);
     }
   };
+
+  const updatePost = async (id) => {
+    const foundPost = posts.find((post) => post.id === id);
+    console.log(foundPost);
+    try {
+      axios
+        .put(`http://localhost:3001/blog/${id}`, {
+          clicked: true,
+        })
+        .then((resp) => sendGetRequest());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Container className="mt-5">
       <div className="blog-container d-flex flex-wrap justify-content-center">
@@ -68,7 +83,10 @@ const Blog = () => {
                     Delete Post
                   </button>
                   <Link to={"/post"}>
-                    <button className="m-3"> Update Post</button>
+                    <button className="m-3" onClick={updatePost(element.id)}>
+                      {" "}
+                      Update Post
+                    </button>
                   </Link>
                 </div>
               );

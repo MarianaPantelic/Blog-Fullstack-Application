@@ -28,6 +28,9 @@ const PostSchema = new Schema(
           }, */
       },
     },
+    clicked: {
+      type: Boolean,
+    },
   },
   //},
   {

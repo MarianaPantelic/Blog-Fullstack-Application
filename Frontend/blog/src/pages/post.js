@@ -9,10 +9,20 @@ const axios = require("axios").default;
 
 const Post = () => {
   const { quill, quillRef } = useQuill();
-  const [state, setState] = useState({ user: "", title: "", content: "" });
+  const [state, setState] = useState([
+    {
+      user: "",
+      title: "",
+      content: "",
+      clicked: false,
+    },
+  ]);
 
   const userRef = useRef();
   const titleRef = useRef();
+
+  const clickedPost = state.find((post) => post.clicked === true);
+  console.log(clickedPost);
 
   useEffect(() => {
     sendGetRequest();
@@ -25,6 +35,14 @@ const Post = () => {
       });
     }
   }, [quill]);
+
+  useEffect(() => {
+    if (clickedPost) {
+      userRef.current.value = clickedPost.user;
+      titleRef.current.value = clickedPost.title;
+      quill.clipboard.dangerouslyPasteHTML(clickedPost.content);
+    }
+  });
 
   const sendGetRequest = async () => {
     try {
@@ -46,6 +64,7 @@ const Post = () => {
           user: userRef.current.value,
           title: titleRef.current.value,
           content: content,
+          clicked: false,
         })
         .then((resp) => sendGetRequest());
       userRef.current.value = "";
