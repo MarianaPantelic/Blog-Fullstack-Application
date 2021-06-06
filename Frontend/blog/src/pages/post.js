@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
+import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
 
 const axios = require("axios").default;
 
@@ -21,9 +22,6 @@ const Post = () => {
   const userRef = useRef();
   const titleRef = useRef();
 
-  const clickedPost = state.find((post) => post.clicked === true);
-  console.log(clickedPost);
-
   useEffect(() => {
     sendGetRequest();
   }, []);
@@ -36,13 +34,22 @@ const Post = () => {
     }
   }, [quill]);
 
+  const clickedPost = state.find((post) => post.clicked === true);
+  //console.log(clickedPost.user);
+
   useEffect(() => {
+    console.log(clickedPost);
     if (clickedPost) {
+      const converter = new QuillDeltaToHtmlConverter(
+        clickedPost.content.ops,
+        {}
+      );
+      const contentHTML = converter.convert();
       userRef.current.value = clickedPost.user;
       titleRef.current.value = clickedPost.title;
-      quill.clipboard.dangerouslyPasteHTML(clickedPost.content);
+      quill.clipboard.dangerouslyPasteHTML(contentHTML);
     }
-  });
+  }, []);
 
   const sendGetRequest = async () => {
     try {
@@ -75,6 +82,27 @@ const Post = () => {
     }
   };
 
+  const updatePost = async () => {
+    /* const id = clickedPost.id;
+    const content = quill.getContents();
+    try {
+      axios
+        .put("http://localhost:3001/blog/${id}", {
+          user: userRef.current.value,
+          title: titleRef.current.value,
+          content: content,
+          clicked: false,
+        })
+        .then((resp) => sendGetRequest());
+      userRef.current.value = "";
+      titleRef.current.value = "";
+      quill.clipboard.dangerouslyPasteHTML("");
+      window.location.replace("/blog");
+    } catch (error) {
+      console.log(error);
+    } */
+  };
+
   return (
     <Container>
       <div className="post-container">
@@ -96,12 +124,15 @@ const Post = () => {
         <div className="quill mx-auto">
           <div ref={quillRef} />
         </div>
-        <div className="btn-container">
+        <div className="btn-container mx-auto">
           <Link to={"/"}>
-            <button>Home</button>
+            <button className="post-btn">Home</button>
           </Link>
           <button className="post-btn" onClick={addPost}>
             Post
+          </button>
+          <button className="post-btn" onClick={updatePost}>
+            Update
           </button>
         </div>
       </div>

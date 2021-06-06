@@ -87,7 +87,10 @@ a:hover {
   border-radius: 10px 10px;
 }
 .btn-container {
+  width: 70%;
   margin-top: 6rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 /*post page*/
@@ -112,7 +115,6 @@ a:hover {
   font-size: 1.5rem;
 }
 .post-btn {
-  margin-left: 15rem;
 }
 
 /*blog page*/
