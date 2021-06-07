@@ -34,10 +34,10 @@ const Post = () => {
     }
   }, [quill]);
 
-  const clickedPost = state.find((post) => post.clicked === true);
   //console.log(clickedPost.user);
-
+  console.log(state);
   useEffect(() => {
+    const clickedPost = state.find((post) => post.clicked === true);
     console.log(clickedPost);
     if (clickedPost) {
       const converter = new QuillDeltaToHtmlConverter(
@@ -53,7 +53,7 @@ const Post = () => {
 
   const sendGetRequest = async () => {
     try {
-      axios
+      await axios
         .get("http://localhost:3001/blog")
         .then((resp) => setState(resp.data));
     } catch (error) {
@@ -61,12 +61,12 @@ const Post = () => {
       console.log(error);
     }
   };
-
+  console.log(state);
   const addPost = async () => {
     const content = quill.getContents();
     console.log(userRef.current.value, titleRef.current.value, content, quill);
     try {
-      axios
+      await axios
         .post("http://localhost:3001/blog", {
           user: userRef.current.value,
           title: titleRef.current.value,
@@ -83,11 +83,12 @@ const Post = () => {
   };
 
   const updatePost = async () => {
-    /* const id = clickedPost.id;
+    const clickedPost = state.find((post) => post.clicked === true);
+    const id = clickedPost.id;
     const content = quill.getContents();
     try {
-      axios
-        .put("http://localhost:3001/blog/${id}", {
+      await axios
+        .put(`http://localhost:3001/blog/${id}`, {
           user: userRef.current.value,
           title: titleRef.current.value,
           content: content,
@@ -100,7 +101,7 @@ const Post = () => {
       window.location.replace("/blog");
     } catch (error) {
       console.log(error);
-    } */
+    }
   };
 
   return (

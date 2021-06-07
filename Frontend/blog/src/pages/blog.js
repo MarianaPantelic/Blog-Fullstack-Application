@@ -13,10 +13,9 @@ const Blog = () => {
 
   const sendGetRequest = async () => {
     try {
-      axios.get("http://localhost:3001/blog").then((resp) => {
-        setPosts(resp.data);
-        console.log(resp.data);
-      });
+      const resp = await axios.get("http://localhost:3001/blog");
+      setPosts(resp.data);
+      console.log(resp.data);
     } catch (error) {
       //catching rejected requests
       console.log(error);
@@ -83,7 +82,10 @@ const Blog = () => {
                     Delete Post
                   </button>
                   <Link to={"/post"}>
-                    <button className="m-3" onClick={updatePost(element.id)}>
+                    <button
+                      className="m-3"
+                      onClick={() => updatePost(element.id)}
+                    >
                       {" "}
                       Update Post
                     </button>
