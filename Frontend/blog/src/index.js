@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReactDOM from "react-dom";
@@ -8,8 +8,30 @@ import Blog from "./pages/blog";
 import Home from "./pages/home";
 import "./main.css";
 import Post from "./pages/post";
+const axios = require("axios").default;
 
 const App = () => {
+  const [posts, setPosts] = useState([
+    {
+      user: "",
+      title: "",
+      content: "",
+      clicked: false,
+    },
+  ]);
+  useEffect(() => {
+    sendGetRequest();
+  }, []);
+  const sendGetRequest = async () => {
+    try {
+      const resp = await axios.get("http://localhost:3001/blog");
+      setPosts(resp.data);
+      console.log(resp.data);
+    } catch (error) {
+      //catching rejected requests
+      console.log(error);
+    }
+  };
   return (
     <div>
       <Router>
@@ -18,10 +40,10 @@ const App = () => {
             <Home />
           </Route>
           <Route path="/blog">
-            <Blog />
+            <Blog posts={posts} sendGetRequest={sendGetRequest} />
           </Route>
           <Route path="/post">
-            <Post />
+            <Post posts={posts} sendGetRequest={sendGetRequest} />
           </Route>
           <Route path="/about">
             <About />

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -8,23 +8,15 @@ import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
 
 const axios = require("axios").default;
 
-const Post = () => {
+const Post = (props) => {
   const { quill, quillRef } = useQuill();
-  const [state, setState] = useState([
-    {
-      user: "",
-      title: "",
-      content: "",
-      clicked: false,
-    },
-  ]);
 
   const userRef = useRef();
   const titleRef = useRef();
 
   useEffect(() => {
-    sendGetRequest();
-  }, []);
+    checkPost();
+  }, [props]);
 
   React.useEffect(() => {
     if (quill) {
@@ -35,9 +27,9 @@ const Post = () => {
   }, [quill]);
 
   //console.log(clickedPost.user);
-  console.log(state);
-  useEffect(() => {
-    const clickedPost = state.find((post) => post.clicked === true);
+
+  const checkPost = async () => {
+    const clickedPost = await props.posts.find((post) => post.clicked === true);
     console.log(clickedPost);
     if (clickedPost) {
       const converter = new QuillDeltaToHtmlConverter(
@@ -49,19 +41,8 @@ const Post = () => {
       titleRef.current.value = clickedPost.title;
       quill.clipboard.dangerouslyPasteHTML(contentHTML);
     }
-  }, []);
-
-  const sendGetRequest = async () => {
-    try {
-      await axios
-        .get("http://localhost:3001/blog")
-        .then((resp) => setState(resp.data));
-    } catch (error) {
-      //catching rejected requests
-      console.log(error);
-    }
   };
-  console.log(state);
+
   const addPost = async () => {
     const content = quill.getContents();
     console.log(userRef.current.value, titleRef.current.value, content, quill);
@@ -73,7 +54,7 @@ const Post = () => {
           content: content,
           clicked: false,
         })
-        .then((resp) => sendGetRequest());
+        .then((resp) => props.sendGetRequest());
       userRef.current.value = "";
       titleRef.current.value = "";
       quill.clipboard.dangerouslyPasteHTML("");
@@ -83,7 +64,7 @@ const Post = () => {
   };
 
   const updatePost = async () => {
-    const clickedPost = state.find((post) => post.clicked === true);
+    const clickedPost = props.posts.find((post) => post.clicked === true);
     const id = clickedPost.id;
     const content = quill.getContents();
     try {
@@ -94,7 +75,7 @@ const Post = () => {
           content: content,
           clicked: false,
         })
-        .then((resp) => sendGetRequest());
+        .then((resp) => props.sendGetRequest());
       userRef.current.value = "";
       titleRef.current.value = "";
       quill.clipboard.dangerouslyPasteHTML("");
