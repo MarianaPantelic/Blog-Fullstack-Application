@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <Container>
-      <div className="about-container">
+      <div className="about-container pacifico-font">
         <h2>About</h2>
         <q>Happiness is a beautiful smile!</q>
         <p className="author">Debasish Mridha</p>

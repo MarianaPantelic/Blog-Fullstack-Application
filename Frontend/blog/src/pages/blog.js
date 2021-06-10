@@ -37,7 +37,7 @@ const Blog = (props) => {
 
   return (
     <Container className="mt-5">
-      <div className="blog-container d-flex flex-wrap justify-content-center">
+      <div className="blog-container d-flex flex-wrap justify-content-center ">
         {props.posts
           ? props.posts.map((element) => {
               const converter = new QuillDeltaToHtmlConverter(
@@ -56,7 +56,7 @@ const Blog = (props) => {
                         }}
                       ></div>
                     </p>
-                    <p>posted by: {element.user}</p>
+                    <p className="pacifico-font">posted by: {element.user}</p>
                   </div>
                   <button
                     className="m-3"
@@ -66,7 +66,7 @@ const Blog = (props) => {
                   </button>
                   <Link to={"/post"}>
                     <button
-                      className="m-3"
+                      className="m-3 pacifico-font"
                       onClick={() => updatePost(element.id)}
                     >
                       {" "}

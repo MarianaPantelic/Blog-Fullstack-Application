@@ -55,6 +55,7 @@ const Post = (props) => {
           clicked: false,
         })
         .then((resp) => props.sendGetRequest());
+      window.location.replace("/blog");
       userRef.current.value = "";
       titleRef.current.value = "";
       quill.clipboard.dangerouslyPasteHTML("");
@@ -87,7 +88,7 @@ const Post = (props) => {
 
   return (
     <Container>
-      <div className="post-container">
+      <div className="post-container pacifico-font">
         <h2 className="mt-5">What made you smile today?</h2>
         <Form.Control
           size="lg"

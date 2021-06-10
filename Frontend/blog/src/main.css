@@ -2,6 +2,9 @@
 body {
   background: url(./img/beach-6100209_1920.jpg);
 }
+.pacifico-font {
+  font-family: "Pacifico", cursive;
+}
 img {
   height: 100vh;
 }
@@ -28,7 +31,6 @@ h2 {
   bottom: 26rem;
   right: -4rem;
   color: black;
-  font-family: "Pacifico", cursive;
   text-shadow: 2px 2px #df7d58;
 }
 .blog-title {
@@ -36,7 +38,6 @@ h2 {
   bottom: 18rem;
   text-align: center;
   color: black;
-  font-family: "Pacifico", cursive;
   line-height: 2.5;
   text-shadow: 2px 2px #df7d58;
 }
@@ -45,7 +46,6 @@ i {
 }
 .smiley-title {
   color: black;
-  font-family: "Pacifico", cursive;
   line-height: 2.5;
   text-shadow: 2px 2px #df7d58;
   margin-top: 20rem;
@@ -57,7 +57,6 @@ i {
   color: black;
   border-radius: 10px 10px;
   margin: 0 auto;
-  font-family: "Pacifico", cursive;
 }
 a,
 a:hover {
@@ -68,7 +67,6 @@ a:hover {
 /*about page*/
 .about-container,
 .post-container {
-  font-family: "Pacifico", cursive;
   font-size: 2.5rem;
   background-color: rgba(0, 0, 0, 0.445);
   color: white;
@@ -122,6 +120,7 @@ a:hover {
 .ql-image {
   width: 20rem;
   height: auto;
+  margin-top: 2rem;
 }
 .blog-container {
   background-color: rgba(0, 0, 0, 0.445);
@@ -139,6 +138,8 @@ a:hover {
 .post-box button {
   width: 10rem;
   border-radius: 10px 10px;
-  font-family: "Pacifico", cursive;
   display: inline-block;
+}
+.card-text {
+  padding: 0 3rem;
 }
