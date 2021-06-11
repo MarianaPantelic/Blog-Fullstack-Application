@@ -11,14 +11,7 @@ import Post from "./pages/post";
 const axios = require("axios").default;
 
 const App = () => {
-  const [posts, setPosts] = useState([
-    {
-      user: "",
-      title: "",
-      content: "",
-      clicked: false,
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     sendGetRequest();
   }, []);

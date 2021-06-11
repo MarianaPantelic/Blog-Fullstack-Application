@@ -123,3 +123,14 @@ exports.updatePost = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.increaseLikes = async (req, res, next) => {
+  const { id } = req.params;
+  const dt = req.body;
+  try {
+    const post = await Post.findByIdAndUpdate(id, dt, { new: true });
+    res.status(200).send(post);
+  } catch (error) {
+    next(error);
+  }
+};

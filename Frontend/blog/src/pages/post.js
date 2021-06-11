@@ -53,6 +53,7 @@ const Post = (props) => {
           title: titleRef.current.value,
           content: content,
           clicked: false,
+          likes: 0,
         })
         .then((resp) => props.sendGetRequest());
       window.location.replace("/blog");

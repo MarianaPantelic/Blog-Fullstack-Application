@@ -32,6 +32,9 @@ const PostSchema = new Schema(
     clicked: {
       type: Boolean,
     },
+    likes: {
+      type: Number,
+    },
   },
   //},
   {

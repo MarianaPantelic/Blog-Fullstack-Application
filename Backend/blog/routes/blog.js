@@ -10,10 +10,16 @@ const {
   deletePost,
   updatePost,
   getPost,
+  increaseLikes,
 } = require("../controller/blogController");
 
 router.route("/").get(getPosts).post(addPost);
 
-router.route("/:id").get(getPost).delete(deletePost).put(updatePost);
+router
+  .route("/:id")
+  .get(getPost)
+  .delete(deletePost)
+  .put(updatePost)
+  .put(increaseLikes);
 
 module.exports = router;
