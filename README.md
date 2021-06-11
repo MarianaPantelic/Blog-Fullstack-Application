@@ -6,7 +6,7 @@ Blog is a MERN Stack Project.
 
 It's a Simple Blog where you can post anything you want and read other posts.
 
-Has multiple functionalities: add post, update post, delete post.
+Has multiple functionalities: add post, like post, update post, delete post.
 
 Uses the quilljs, a modern rich text editor built for compatibility and extensibility.
 
