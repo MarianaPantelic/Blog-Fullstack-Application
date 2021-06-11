@@ -1,6 +1,6 @@
 # Blog
 
-![Result](blog.gif)
+![Result](Blog.gif)
 
 Blog is a MERN Stack Project.
 

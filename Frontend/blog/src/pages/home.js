@@ -8,13 +8,13 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <Carousel>
-      <Carousel.Item interval={4000}>
+      <Carousel.Item interval={2000}>
         <img className="d-block w-100" src={img1} alt="First slide" />
         <Carousel.Caption>
           <h2 className="happy-title pacifico-font">What makes you happy?</h2>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={4000}>
+      <Carousel.Item interval={2000}>
         <img className="d-block w-100" src={img2} alt="Second slide" />
         <Carousel.Caption className="blog-title pacifico-font">
           <h2>This is a blog</h2>
@@ -22,7 +22,7 @@ const Home = () => {
           <h2>that make us happy!</h2>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={4000}>
+      <Carousel.Item interval={2000}>
         <img className="d-block w-100" src={img3} alt="Third slide" />
         <Carousel.Caption>
           <h2 className="smiley-title pacifico-font">
