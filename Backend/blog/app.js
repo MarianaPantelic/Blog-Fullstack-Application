@@ -20,7 +20,6 @@ var app = express();
 const FileSync = require("lowdb/adapters/FileSync");
 const adapter = new FileSync("data/db.json");
 const db = low(adapter);
-//add default entries to the DATABASE
 db.defaults({
   posts: [],
 }).write(); */
@@ -53,8 +52,6 @@ app.use("/users", usersRouter);
 app.use("/blog", blogRouter);
 
 app.use((err, req, res, next) => {
-  //respond to the requestor with the error messages
-  //set response status to 500
   console.log(err);
   res.status(500).send({
     error: {
