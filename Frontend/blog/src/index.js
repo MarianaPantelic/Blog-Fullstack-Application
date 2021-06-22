@@ -14,8 +14,12 @@ const axios = require("axios").default;
 
 const App = () => {
   const [posts, setPosts] = useState([]);
+  const [users, setUsers] = useState([]);
   useEffect(() => {
     sendGetRequest();
+  }, []);
+  useEffect(() => {
+    sendUserGetRequest();
   }, []);
   const sendGetRequest = async () => {
     try {
@@ -23,7 +27,15 @@ const App = () => {
       setPosts(resp.data);
       console.log(resp.data);
     } catch (error) {
-      //catching rejected requests
+      console.log(error);
+    }
+  };
+  const sendUserGetRequest = async () => {
+    try {
+      const resp = await axios.get("http://localhost:3001/users");
+      setUsers(resp.data);
+      console.log(resp.data);
+    } catch (error) {
       console.log(error);
     }
   };
@@ -44,10 +56,10 @@ const App = () => {
             <About />
           </Route>
           <Route path="/register">
-            <Register posts={posts} sendGetRequest={sendGetRequest} />
+            <Register users={users} sendUserGetRequest={sendUserGetRequest} />
           </Route>
           <Route path="/login">
-            <Login posts={posts} sendGetRequest={sendGetRequest} />
+            <Login users={users} sendUserGetRequest={sendUserGetRequest} />
           </Route>
         </Switch>
       </Router>
