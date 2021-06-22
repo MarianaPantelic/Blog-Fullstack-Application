@@ -20,7 +20,7 @@ const About = () => {
         <Link to={"/blog"}>
           <button className="m-5">Read</button>
         </Link>
-        <Link to={"/post"}>
+        <Link to={"/login"}>
           <button className="m-5">Post</button>
         </Link>
 
