@@ -80,7 +80,8 @@ a:hover {
   margin-left: 20rem;
 }
 .about-container button,
-.post-container button {
+.post-container button,
+.login-container button {
   width: 10rem;
   border-radius: 10px 10px;
 }
@@ -321,4 +322,17 @@ a:hover {
       -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
+}
+
+/*Login page*/
+.login-container {
+  margin: 10% auto;
+  width: 30%;
+  background-color: rgba(0, 0, 0, 0.445);
+  color: white;
+  border-radius: 10px 10px;
+  padding: 5rem;
+}
+.login-container button {
+  font-size: 1.5rem;
 }
