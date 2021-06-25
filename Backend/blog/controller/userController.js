@@ -26,7 +26,7 @@ exports.addUser = async (req, res, next) => {
     const token = user.generateAuthToken();
     await user.save();
     const data = user.getPublicFields();
-    res.status(200).header("x-auth", token).send(data);
+    res.status(200).header("x-auth", token).send({ token, user });
   } catch (e) {
     next(e);
   }
@@ -41,7 +41,7 @@ exports.loginUser = async (req, res, next) => {
     if (!valid) throw new createError.NotFound();
     const token = user.generateAuthToken();
     const data = user.getPublicFields();
-    res.status(200).header("x-auth", token).send(data);
+    res.status(200).header("x-auth", token).send({ token, user });
   } catch (error) {
     next(error);
   }

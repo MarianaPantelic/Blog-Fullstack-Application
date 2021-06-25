@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -9,6 +9,7 @@ import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
 const axios = require("axios").default;
 
 const Post = (props) => {
+  const [user, setUser] = useState();
   const { quill, quillRef } = useQuill();
 
   const userRef = useRef();
@@ -16,6 +17,9 @@ const Post = (props) => {
 
   useEffect(() => {
     checkPost();
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
+    setUser(user);
   }, [props]);
 
   React.useEffect(() => {
@@ -30,7 +34,7 @@ const Post = (props) => {
 
   const checkPost = async () => {
     const clickedPost = await props.posts.find((post) => post.clicked === true);
-    console.log(clickedPost);
+
     if (clickedPost) {
       const converter = new QuillDeltaToHtmlConverter(
         clickedPost.content.ops,
@@ -90,7 +94,9 @@ const Post = (props) => {
   return (
     <Container>
       <div className="post-container pacifico-font">
+        <h1>Welcome {user && user.userName}</h1>
         <h2 className="mt-5">What made you smile today?</h2>
+
         <Form.Control
           size="lg"
           type="text"

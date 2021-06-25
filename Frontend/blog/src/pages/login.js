@@ -16,7 +16,11 @@ const Login = (props) => {
           password: passwordRef.current.value,
         })
         .then((resp) => {
-          console.log(resp);
+          console.log("ok", resp);
+          localStorage.setItem("token", resp.data.token);
+          localStorage.setItem("user", JSON.stringify(resp.data.user));
+
+          window.location.replace("/");
         });
     } catch (error) {
       console.log(error);
@@ -44,7 +48,11 @@ const Login = (props) => {
           />
         </Form.Group>
         <div className="text-center">
-          <button className="pacifico-font m-3" onClick={loginUser}>
+          <button
+            type="button"
+            className="pacifico-font m-3"
+            onClick={loginUser}
+          >
             Login
           </button>
         </div>

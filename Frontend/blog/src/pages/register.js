@@ -7,16 +7,20 @@ const Register = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const addPost = async () => {
+  const addUser = async () => {
     try {
-      await axios
-        .post("http://localhost:3001/users", {
-          userName: userNameRef.current.value,
-          email: emailRef.current.value,
-          password: passwordRef.current.value,
-        })
-        .then((resp) => props.sendUserGetRequest());
-      window.location.replace("/users/login");
+      console.log("add user");
+      const resp = await axios.post("http://localhost:3001/users", {
+        userName: userNameRef.current.value,
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      });
+      props.sendUserGetRequest();
+      console.log(resp.data);
+      localStorage.setItem("token", resp.data.token);
+      localStorage.setItem("user", JSON.stringify(resp.data.user));
+
+      window.location.replace("/");
       userNameRef.current.value = "";
       emailRef.current.value = "";
       passwordRef.current.value = "";
@@ -56,7 +60,7 @@ const Register = (props) => {
         </Form.Group>
 
         <div className="text-center mt-5">
-          <button type="submit" className="pacifico-font" onClick={addPost}>
+          <button type="button" className="pacifico-font" onClick={addUser}>
             Register
           </button>
         </div>

@@ -39,6 +39,11 @@ const App = () => {
       console.log(error);
     }
   };
+  const logOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.replace("/");
+  };
   return (
     <div>
       <Router>
@@ -71,10 +76,21 @@ const App = () => {
           <Nav.Link href="/blog">Blog</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/login">Post</Nav.Link>
+          {localStorage.getItem("token") ? (
+            <Nav.Link href="/post">Post</Nav.Link>
+          ) : (
+            <Nav.Link href="/login">Post</Nav.Link>
+          )}
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="/about">About</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          {localStorage.getItem("token") ? (
+            <Nav.Link onClick={logOut}>Logout</Nav.Link>
+          ) : (
+            <Nav.Link href="/login">Login</Nav.Link>
+          )}
         </Nav.Item>
       </Nav>
     </div>
