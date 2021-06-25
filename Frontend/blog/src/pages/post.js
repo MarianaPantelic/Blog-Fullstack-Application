@@ -49,11 +49,11 @@ const Post = (props) => {
 
   const addPost = async () => {
     const content = quill.getContents();
-    console.log(userRef.current.value, titleRef.current.value, content, quill);
+
     try {
       await axios
         .post("http://localhost:3001/blog", {
-          user: userRef.current.value,
+          user: user.userName,
           title: titleRef.current.value,
           content: content,
           clicked: false,
@@ -93,17 +93,12 @@ const Post = (props) => {
 
   return (
     <Container>
-      <div className="post-container pacifico-font">
-        <h1>Welcome {user && user.userName}</h1>
-        <h2 className="mt-5">What made you smile today?</h2>
+      <div className="post-container pacifico-font p-2">
+        <h1 className="mt-5">
+          Welcome <span className="user-name">{user && user.userName}</span>
+        </h1>
+        <h3 className="mt-3">What made you smile today?</h3>
 
-        <Form.Control
-          size="lg"
-          type="text"
-          placeholder="Enter your name"
-          className="title-input mx-auto mt-5"
-          ref={userRef}
-        />
         <Form.Control
           size="lg"
           type="text"

@@ -114,6 +114,12 @@ a:hover {
   background-color: white;
   font-size: 1.5rem;
 }
+.user-name {
+  color: black;
+}
+.user-name:hover {
+  color: rgb(107, 1, 1);
+}
 
 /*blog page*/
 
