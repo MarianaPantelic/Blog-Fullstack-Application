@@ -1,4 +1,5 @@
 const User = require("../models/User");
+
 const createError = require("http-errors");
 
 exports.getUsers = async (req, res, next) => {
