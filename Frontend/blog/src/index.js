@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Nav } from "react-bootstrap";
+import { Col, Container, Nav, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -17,6 +17,7 @@ const App = () => {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
   const [userPosts, setUserPosts] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     sendGetRequest();
@@ -89,42 +90,47 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
-      <Nav activeKey="/home" className="px-5">
-        <div className="justify-content-center d-flex mx-auto">
-          <Nav.Item>
-            <Nav.Link href="/">Home</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/about">About</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/blog">Blog</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            {localStorage.getItem("token") ? (
-              <Nav.Link href="/post">Post</Nav.Link>
-            ) : (
-              <Nav.Link href="/login">Post</Nav.Link>
-            )}
-          </Nav.Item>
-          <Nav.Item>
-            {localStorage.getItem("token") ? (
-              <Nav.Link onClick={logOut} className="logout">
-                Logout
-              </Nav.Link>
-            ) : (
-              <Nav.Link href="/login">Login</Nav.Link>
-            )}
-          </Nav.Item>
-        </div>
-        <div className="profile">
-          <Nav.Item>
-            {localStorage.getItem("token") ? (
-              <Nav.Link href="/profile">
-                <i class="far fa-user"></i>
-              </Nav.Link>
-            ) : null}
-          </Nav.Item>
+
+      <Nav activeKey="/home" className="px-5 d-flex justify-content-center">
+        <div className="d-flex">
+          <Col lg={10} className=" d-flex justify-content-center mx-5">
+            <Nav.Item>
+              <Nav.Link href="/">Home</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/about">About</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/blog">Blog</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              {localStorage.getItem("token") ? (
+                <Nav.Link href="/post">Post</Nav.Link>
+              ) : (
+                <Nav.Link href="/login">Post</Nav.Link>
+              )}
+            </Nav.Item>
+          </Col>
+
+          <Col lg={2} className="profile d-flex">
+            <Nav.Item className="d-flex">
+              {localStorage.getItem("token") ? (
+                <Nav.Link href="/profile" className="d-flex">
+                  <span className="mx-2 ">{user && user.userName}</span>
+                  <i class="far fa-user" id="user"></i>
+                </Nav.Link>
+              ) : null}
+            </Nav.Item>
+            <Nav.Item>
+              {localStorage.getItem("token") ? (
+                <Nav.Link onClick={logOut} className="logout">
+                  Logout
+                </Nav.Link>
+              ) : (
+                <Nav.Link href="/login">Login</Nav.Link>
+              )}
+            </Nav.Item>
+          </Col>
         </div>
       </Nav>
     </div>

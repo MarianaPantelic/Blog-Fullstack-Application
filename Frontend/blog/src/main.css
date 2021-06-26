@@ -31,7 +31,11 @@ h2 {
   color: white;
 }
 .profile {
-  float: right;
+  margin-left: 12rem;
+  color: white;
+}
+#user {
+  margin-top: 0.5rem;
 }
 
 /*home page*/
