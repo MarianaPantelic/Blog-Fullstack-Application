@@ -23,6 +23,16 @@ img {
 h2 {
   font-size: 5rem;
 }
+.logout:hover,
+.profile:hover {
+  color: white;
+}
+.profile i {
+  color: white;
+}
+.profile {
+  float: right;
+}
 
 /*home page*/
 

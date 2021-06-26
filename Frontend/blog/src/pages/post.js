@@ -93,9 +93,9 @@ const Post = (props) => {
 
   return (
     <Container>
-      <div className="post-container pacifico-font p-2">
-        <h1 className="mt-5">
-          Welcome <span className="user-name">{user && user.userName}</span>
+      <div className="post-container pacifico-font pt-3">
+        <h1 className="mt-3">
+          Welcome <span className="user-name">{user && user.userName}</span> !
         </h1>
         <h3 className="mt-3">What made you smile today?</h3>
 
