@@ -18,16 +18,22 @@ const App = () => {
   const [users, setUsers] = useState([]);
   const [userPosts, setUserPosts] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
+  const userName = user.userName;
+  console.log(userName);
+  console.log(userPosts);
 
   useEffect(() => {
     sendGetRequest();
   }, []);
+
   useEffect(() => {
     sendUserGetRequest();
   }, []);
+
   useEffect(() => {
     sendUserPostsGetRequest();
   }, []);
+
   const sendGetRequest = async () => {
     try {
       const resp = await axios.get("http://localhost:3001/blog");
@@ -37,6 +43,7 @@ const App = () => {
       console.log(error);
     }
   };
+
   const sendUserGetRequest = async () => {
     try {
       const resp = await axios.get("http://localhost:3001/users");
@@ -46,9 +53,12 @@ const App = () => {
       console.log(error);
     }
   };
+
   const sendUserPostsGetRequest = async () => {
     try {
-      const resp = await axios.get("http://localhost:3001/profile");
+      const resp = await axios.get("http://localhost:3001/profile", {
+        user: userName,
+      });
       setUserPosts(resp.data);
       console.log(resp.data);
     } catch (error) {
@@ -85,7 +95,9 @@ const App = () => {
           <Route path="/profile">
             <Profile
               userPosts={userPosts}
+              posts={posts}
               sendUserPostsGetRequest={sendUserPostsGetRequest}
+              sendGetRequest={sendGetRequest}
             />
           </Route>
         </Switch>

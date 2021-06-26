@@ -3,7 +3,7 @@ import { Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const axios = require("axios").default;
 
-const Login = (props) => {
+const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
@@ -19,7 +19,6 @@ const Login = (props) => {
           console.log("ok", resp);
           localStorage.setItem("token", resp.data.token);
           localStorage.setItem("user", JSON.stringify(resp.data.user));
-
           window.location.replace("/");
         });
     } catch (error) {
