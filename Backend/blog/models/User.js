@@ -37,6 +37,18 @@ UserSchema.methods.getPublicFields = function () {
   return returnObject;
 };
 
+UserSchema.statics.findByToken = function (token) {
+  const User = this;
+  let decoded;
+  try {
+    decoded = jwt.verify(token, "FWB43-2-110%");
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+  return User.findOne({ _id: decoded._id });
+};
+
 UserSchema.methods.checkPassword = function (password) {
   const user = this;
   return bcrypt.compare(password, user.password);

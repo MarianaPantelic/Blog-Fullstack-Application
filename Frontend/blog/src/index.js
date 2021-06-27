@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Nav, Row } from "react-bootstrap";
+import { Col, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -55,6 +55,7 @@ const App = () => {
   };
 
   const sendUserPostsGetRequest = async () => {
+    console.log(userName);
     try {
       const resp = await axios.get("http://localhost:3001/profile", {
         user: userName,
