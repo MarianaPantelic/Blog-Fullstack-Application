@@ -20,7 +20,7 @@ router.route("/").get(getPosts).post(auth, addPost);
 router
   .route("/:id")
   .get(getPost)
-  .delete(auth, deletePost)
+  .delete(deletePost)
   .put(auth, updatePost)
   .put(increaseLikes);
 

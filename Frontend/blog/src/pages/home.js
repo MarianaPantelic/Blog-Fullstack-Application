@@ -28,9 +28,16 @@ const Home = () => {
           <h2 className="smiley-title pacifico-font">
             What made you <i class="fas fa-smile-wink"></i> today?
           </h2>
-          <Link to={"/post"}>
-            <div className="home-btn pacifico-font">Post</div>
-          </Link>
+
+          {localStorage.getItem("token") ? (
+            <Link href="/post">
+              <div className="home-btn pacifico-font">Post</div>
+            </Link>
+          ) : (
+            <Link href="/login">
+              <div className="home-btn pacifico-font">Post</div>
+            </Link>
+          )}
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

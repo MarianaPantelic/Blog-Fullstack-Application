@@ -10,9 +10,13 @@ const Blog = (props) => {
   const deletePost = async (id) => {
     try {
       axios
-        .delete(`http://localhost:3001/blog/${id}`, {
-          data: { id: id },
-        })
+        .delete(
+          `http://localhost:3001/blog/${id}`,
+          {
+            data: { _id: id },
+          },
+          { headers: { "x-auth": localStorage.getItem("token") } }
+        )
         .then((resp) => {
           props.sendGetRequest();
         });
@@ -22,13 +26,17 @@ const Blog = (props) => {
   };
 
   const updatePost = async (id) => {
-    const foundPost = props.posts.find((post) => post.id === id);
+    const foundPost = props.posts.find((post) => post._id === id);
     console.log(foundPost);
     try {
       axios
-        .put(`http://localhost:3001/blog/${id}`, {
-          clicked: true,
-        })
+        .put(
+          `http://localhost:3001/blog/${id}`,
+          {
+            clicked: true,
+          },
+          { headers: { "x-auth": localStorage.getItem("token") } }
+        )
         .then((resp) => props.sendGetRequest());
     } catch (error) {
       console.log(error);
@@ -36,13 +44,17 @@ const Blog = (props) => {
   };
 
   const increaseLikes = async (id) => {
-    const foundPost = props.posts.find((post) => post.id === id);
+    const foundPost = props.posts.find((post) => post._id === id);
     console.log(foundPost.likes);
     try {
       axios
-        .put(`http://localhost:3001/blog/${id}`, {
-          likes: foundPost.likes + 1,
-        })
+        .put(
+          `http://localhost:3001/blog/${id}`,
+          {
+            likes: foundPost.likes + 1,
+          },
+          { headers: { "x-auth": localStorage.getItem("token") } }
+        )
         .then((resp) => props.sendGetRequest());
     } catch (error) {
       console.log(error);
@@ -77,21 +89,21 @@ const Blog = (props) => {
                   <span className="m-2 likes">{element.likes}</span>
                   <span
                     className="m-3"
-                    onClick={() => increaseLikes(element.id)}
+                    onClick={() => increaseLikes(element._id)}
                   >
                     <i class="fas fa-thumbs-up fa-2x"></i>
                   </span>
                   <Link to={"/post"}>
                     <span
                       className="m-3"
-                      onClick={() => updatePost(element.id)}
+                      onClick={() => updatePost(element._id)}
                     >
                       {" "}
                       <i class="far fa-edit fa-2x"></i>
                     </span>
                   </Link>
 
-                  <span className="m-3" onClick={() => deletePost(element.id)}>
+                  <span className="m-3" onClick={() => deletePost(element._id)}>
                     <i class="fas fa-trash-alt fa-2x"></i>
                   </span>
                 </div>

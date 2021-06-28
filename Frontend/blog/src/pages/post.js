@@ -41,7 +41,6 @@ const Post = (props) => {
         {}
       );
       const contentHTML = converter.convert();
-      userRef.current.value = clickedPost.user;
       titleRef.current.value = clickedPost.title;
       quill.clipboard.dangerouslyPasteHTML(contentHTML);
     }
@@ -52,13 +51,17 @@ const Post = (props) => {
 
     try {
       await axios
-        .post("http://localhost:3001/blog", {
-          user: user.userName,
-          title: titleRef.current.value,
-          content: content,
-          clicked: false,
-          likes: 0,
-        })
+        .post(
+          "http://localhost:3001/blog",
+          {
+            user: user.userName,
+            title: titleRef.current.value,
+            content: content,
+            clicked: false,
+            likes: 0,
+          },
+          { headers: { "x-auth": localStorage.getItem("token") } }
+        )
         .then((resp) => props.sendGetRequest());
       window.location.replace("/blog");
       userRef.current.value = "";
@@ -71,18 +74,21 @@ const Post = (props) => {
 
   const updatePost = async () => {
     const clickedPost = props.posts.find((post) => post.clicked === true);
-    const id = clickedPost.id;
+    let id = "";
+    if (clickedPost) id = clickedPost._id;
     const content = quill.getContents();
     try {
       await axios
-        .put(`http://localhost:3001/blog/${id}`, {
-          user: userRef.current.value,
-          title: titleRef.current.value,
-          content: content,
-          clicked: false,
-        })
+        .put(
+          `http://localhost:3001/blog/${id}`,
+          {
+            title: titleRef.current.value,
+            content: content,
+            clicked: false,
+          },
+          { headers: { "x-auth": localStorage.getItem("token") } }
+        )
         .then((resp) => props.sendGetRequest());
-      userRef.current.value = "";
       titleRef.current.value = "";
       quill.clipboard.dangerouslyPasteHTML("");
       window.location.replace("/blog");
