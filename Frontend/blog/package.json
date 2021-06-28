@@ -16,7 +16,7 @@
     "react-hook-form": "^7.6.3",
     "react-quilljs": "^1.2.14",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^1.1.5",
+    "react-scripts": "^4.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

@@ -5,5 +5,6 @@ exports.setCors = (req, res, next) => {
     "Origin, x-Requested-With, Content-Type, Accept"
   );
   res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Expose-Headers", "x-auth");
   next();
 };

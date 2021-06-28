@@ -18,7 +18,11 @@ const App = () => {
   const [users, setUsers] = useState([]);
   const [userPosts, setUserPosts] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
-  const userName = user.userName;
+  let userName = "";
+  if (user) {
+    userName = user.userName;
+  }
+
   console.log(userName);
   console.log(userPosts);
 
@@ -57,9 +61,9 @@ const App = () => {
   const sendUserPostsGetRequest = async () => {
     console.log(userName);
     try {
-      const resp = await axios.get("http://localhost:3001/profile", {
-        user: userName,
-      });
+      const resp = await axios.get(
+        `http://localhost:3001/profile?user=${userName}`
+      );
       setUserPosts(resp.data);
       console.log(resp.data);
     } catch (error) {

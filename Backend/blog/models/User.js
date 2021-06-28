@@ -40,6 +40,7 @@ UserSchema.methods.getPublicFields = function () {
 UserSchema.statics.findByToken = function (token) {
   const User = this;
   let decoded;
+  console.log(token);
   try {
     decoded = jwt.verify(token, "FWB43-2-110%");
   } catch (error) {
